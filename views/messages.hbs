@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Id</th>
+        <th>To</th>
+        <th>From</th>
+        <th>Message Text</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each .}}
+        <tr>
+          <td>{{this.id}}</td>
+          <td>{{this.to}}</td>
+          <td>{{this.from}}</td>
+          <td>{{this.body}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

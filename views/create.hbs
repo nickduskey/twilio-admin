@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card card-outline-primary text-xs-center">
+        <div class="card-block">
+            <form id="createSmsForm">
+                <div id="sms-input" class="form-group">
+                    <textarea class="form-control" id="messageText" onkeyup="countChar(this)" rows="3" placeholder="Enter message text"></textarea>
+                </div>
+                <small id="charNum" class="form-text text-muted"></small>
+                <div class="form-group">
+                    <label for="groupSelect">What list do you want this message to go to?</label>
+                    <select class="form-control" id="groupSelect">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">Send now</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function countChar(val) {
+        var len = val.value.length;
+        if (len > 160) {
+          $('#sms-input').addClass('has-danger');
+          $('#messageText').addClass('form-control-danger');
+          $('#charNum').addClass('text-danger');
+        } else {
+            if ($('#sms-input').hasClass('has-danger')) {
+                $('#sms-input').removeClass('has-danger');
+            }
+            if ($('#messageText').hasClass('form-control-danger')) {
+                $('#messageText').removeClass('form-control-danger');
+            }
+            if ($('#charNum').hasClass('text-danger')) {
+                $('#charNum').removeClass('text-danger');
+            }
+        }
+        $('#charNum').text(160 - len);
+      };
+</script>

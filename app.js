@@ -3,6 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var hbs = require('express-hbs');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -15,9 +16,14 @@ var create = require('./routes/create');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Use `.hbs` for extensions and find partials in `views/partials`.
+app.engine('hbs', hbs.express4({
+  partialsDir: __dirname + '/views/partials',
+  layoutsDir: __dirname + '/views/layouts',
+  defaultLayout: __dirname + '/views/layouts/default.hbs'
+}));
 app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

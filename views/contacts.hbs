@@ -1,26 +1,44 @@
+{{!< default}}
 <div class="container">
-  <button type="button" class="btn btn-success btn-lg btn-block create-list">Create list from selected</button>
-  <table class="table table-striped table-hover table-bordered">
+  <table class="table table-compact table-striped table-hover table-bordered" 
+    data-toggle="table"
+    data-click-to-select="true"
+    data-sort-name="id"
+    data-sort-order="asc"
+    data-search="true"
+    id="contacts-table">
     <thead class="thead-inverse">
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Select</th>
+      <tr id="tr-id-{{@index}}" data-title="row-{{@index}}">
+        <th data-field="state" data-checkbox="true"></th>
+        <th data-field="id" data-sortable="true">Id</th>
+        <th data-field="name" data-sortable="true">Name</th>
+        <th data-field="phone" data-sortable="true">Phone</th>        
       </tr>
     </thead>
     <tbody>
       {{#each this}}
         {{#if this.id}}
           <tr>
+            <td></td>
             <td>{{this.id}}</td>
             <td>{{this.name}}</td>
             <td>{{this.phone}}</td>
-            <td><div class="text-center"><input type="checkbox"></div></td>
           </tr>
         {{/if}}
       {{/each}}
     </tbody>
   </table>
-  <button type="button" class="btn btn-success btn-lg btn-block create-list">Create list from selected</button>
+  <button type="button" id="create-list-button" class="btn btn-success btn-lg create-list">Create list from selected</button>
 </div>
+
+{{#contentFor "scripts"}}
+<script>
+  $(document).ready(function() {
+    console.log('document ready');
+    $('#create-list-button').click(function () {
+      console.log('button clicked');
+      alert('getSelections: ' + JSON.stringify($('#contacts-table').bootstrapTable('getAllSelections')));
+    });
+  });
+</script>
+{{/contentFor}}

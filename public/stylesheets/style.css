@@ -9757,3 +9757,11 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   font-size: 10px;
   line-height: 10px;
 }
+
+/*
+Custom styles */
+.create-list {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; 
+}

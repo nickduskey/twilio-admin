@@ -1,0 +1,21 @@
+{
+  "development": {
+      "username": "postgres",
+      "password": "easton",
+      "database": "smartlinkcms",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+  },
+  "test": {
+      "username": "postgres",
+      "password": "easton",
+      "database": "smartlinkcms",
+      "host": "127.0.0.1",
+      "dialect": "postgres",
+      "logging": false
+  },
+  "production": {
+      "use_env_variable": "DB_URL"
+  }
+}
+
